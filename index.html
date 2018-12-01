@@ -117,6 +117,10 @@ p_{I,l} - p_{I,r} = \sigma k
 
 <h2> The Sod Shock Tube Problem </h2>
 
+	<p align="center"><img class = "figure" src="https://raw.githubusercontent.com/rdatta31/multiphase-flow/master/shock_tube_configuration.png" alt="figure 1"/></p>
+
+	<p align="center">Shocktube configurations at t = 0 and t > 0</p>
+
 </p>  The Sod shock tube problem is an air-helium shock tube which can be initialized with the following conditions: </p>
 
 			<div align="center" lang="latex">
@@ -130,6 +134,36 @@ p_{I,l} - p_{I,r} = \sigma k
 (\rho, u, p, \gamma) =  (0.125, 0, 0.1, 1.667) , (x > 0.5) 
 
 	</div>
+
+	<p>The simple shock tube configuration is shown above. The shock tube problem was solved numerically and compared with the results from the exact Riemann solver at t = 0.2s. The method is able to correctly capture the shock strength and speed, as well as the location of the contact interface. The method introduces errors, especially near the contact interface, and to some degree, in the rarefaction wave region of the shock tube. However, the magnitude of the error can be observed to decrease at higher resolutions.</p>
+
+
+	<p align="center"><img class = "figure" src="https://raw.githubusercontent.com/rdatta31/multiphase-flow/master/density_velocity_distribution.png" alt="figure 1"/></p>
+
+	<p align="center">Variation of  velocity and density along Shock Tube at t = 0.2s</p>
+
+	<h2> Hydrodynamic Shock Tube Problem </h2>
+
+	<p>The hydrodynamic shock tube problem was be initialized with the following conditions: </p>
+
+<div align="center" lang="latex">
+	(\rho, u, p, \gamma) =  (1630.0, 0.0, 7.81e9, 7.15) , (x \leq 2) 
+
+	</div>
+
+				<div align="center" lang="latex">
+
+(\rho, u, p, \gamma) =  (0.125, 0, 0.1, 1.667) , (x > 2) 
+
+	</div>
+
+	<p>The shock tube problem was solved numerically and compared with the results from the exact Riemann solver at t = 0.00025 s. The Stiffened Gas EOS of state was used, with a reference pressure <span lang="latex"> $B = 3.309e8$ </span>.  The results from the simulation were found to be in good agreement with the exact solution. Again, the numerical method seems to introduce errors near the contact discontinuity, but the magnitude of the error can be reduced by running the simulation at higher resolutions. 
+
+		<p align="center"><img class = "figure" src="https://raw.githubusercontent.com/rdatta31/multiphase-flow/master/hydrodynamic_velocity.png" alt="figure 1"/></p>
+
+		<p align="center"><img class = "figure" src="https://raw.githubusercontent.com/rdatta31/multiphase-flow/master/hydrodynamic_density.png" alt="figure 1"/></p>
+
+
 
 		</div>
 		
