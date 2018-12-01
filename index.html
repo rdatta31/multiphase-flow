@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script src="https://latex.codecogs.com/latexit.js"></script>
+</head>
+
+<body><br>
+
+		<div class = "sidenav">
+
+			<h4 align = "center"> Iterative Riemann Solver for Interface Interaction in Compressible Multiphase Flows  </h4>
+			
+
+				
+				<div class = "foot">
+					<p align="center">  Rishabh Datta is a 4th Year Mechanical Engineering student at Georgia Tech, Atlanta. Rishabh is interested in Energy and Fluid Systems, CFD and renewable technology. For more projects, 
+					<a href="https://rdatta31.github.io/">click here.</a>
+
+					</p>
+				</div>
+
+			</div>
+
+
+		<div class = "main">
+
+			<div class = "top">
+				<h4 align = "center"> Iterative Riemann Solver for Interface Interaction in Compressible Multiphase Flows  </h4>
+	
+				
+					<p align="center">  Rishabh Datta is a 4th Year Mechanical Engineering student at Georgia Tech, Atlanta. Rishabh is interested in Energy and Fluid Systems, CFD and renewable technology. For more projects, 
+					<a href="https://rdatta31.github.io/">click here.</a>
+
+					</p>
+				</div><br>
+
+
+
+	
+	<h1> nterface Interaction in Multiphase Flows </h1><br>
+	<h2> Introduction </h2>
+	
+    <p> Multiphase flows of compressible fluids can be simulated using different numerical methods. In the interface-ghost fluid method introduced by Hu, 2004, multiphase flows are simulated by solving the single phase equations within each fluid, and solving the real and ghost fluid interactions at the interface. The interface movement is captured using a level-set function, where the zero level-set marks the position of the interface in a multi-fluid system. The interaction at the interface constitutes a two-material Riemann problem. In this report, the two-material Riemann problem at the interface is solved for two compressible, inviscid and immiscible fluids. The effect of capillary forces and the presence of large discontinuities in impedances of the materials is also considered. The results are them compared with standard test cases, whose results have been obtained from an exact Riemann solver. </p>
+
+	<h2> Interface Interaction </h2>
+
+	<p>Compressible inviscid flow in 2D can be described using the Euler equations as follows:
+	</p>
+
+
+	<div align="center" lang="latex">
+\begin{bmatrix}
+           \rho \\ \rho u \\\rho v \\ E \end{bmatrix} _{t} +
+         \begin{bmatrix}
+           \rho u \\ \rho u^{2} + p \\ \rho uv \\ (E+p)u
+         \end{bmatrix} _{x} +
+         \begin{bmatrix}
+           \rho v \\ \rho uv \\ \rho v^{2} +p \\ (E+p)v
+         \end{bmatrix} _{y} = 0
+	</div>
+
+<p>where <span lang="latex">\rho</span> is the density, <span lang="latex">u</span> and <span lang="latex">v</span> are the components of velocity and the x and y directions respectively, <i>p</i> is the pressure, and <span lang="latex">$E = \rho e + 1/2 \rho u^2$</span>  is the total energy density.</p>
+
+<p>The method of characteristics was used to solve the two material Riemann problem at the interface. In the presence of capillary forces, a pressure drop is experienced at the interface between the region near the interface in the left fluid, and that in the right fluid. The pressures of the two fluids near the interface change to <span lang="latex">$p_{I,l}$ </span> and <span lang="latex">$p_{I,r}$ </span>, where: </p>
+
+
+	<div align="center" lang="latex">
+ p_{l} - p_{r} = \sigma  k
+	</div>
+
+	<p>  where <span lang="latex"> $\sigma$ </span> is the coefficient of surface tension, and <i>k</i> is the curvature. </p>
+
+<p>For isentropic interface intercation, the velocity at the  interface <span lang="latex"> $u_{I}$  </span> can be represented as:</p>
+
+	<div align="center" lang="latex">
+u_{I} = u_{l} - \int_ {p_{l}}^{p_{I,l}} \frac {dp}{ \rho_ {l,s}c_{l,s}}  
+	</div>
+
+		<div align="center" lang="latex">
+u_{I} = u_{r} + \int_ {p_{r}}^{p_{I,r}} \frac {dp}{ \rho_ {r,s}c_{r,s}}   
+	</div>
+
+	<p> The set of equations need to be closed using an appropriate equation-of-state (EOS). The Stiffened Gas EOS, which was used, can be represented as follows: </p>
+
+
+		<div align="center" lang="latex">
+p = (\gamma -1)\rho e - B   
+	</div>
+
+<p> Isentropic EOS can be written as follows: </p>
+
+	<p> These equations can be rewritten as: </p>
+			<div align="center" lang="latex">
+\frac{f(p)}{ \rho^{ \gamma}} = constant  
+	</div>
+
+<p> where <span lang="latex"> $f(p) = p$ </span>  for an ideal gas, and <span lang="latex"> $f(p) = p + B$ </span> for a stiffened gas. \\
+
+	<p>  where <span lang="latex"> $\gamma$  </span> is the specific heat ratio and <i> B</i> is the reference pressure.</p>
+
+	<p> These equations can be rewritten as: </p>
+			<div align="center" lang="latex">
+u_{I}  = u_{l}  - \frac{2c_l}{\gamma_l -1}\left[\left(\frac{f_l(p_{I,l})}{f_l(p_l)}\right)^{(\gamma_l -1)/2\gamma_l}-1\right]  
+	</div>
+
+			<div align="center" lang="latex">
+u_{I}  = u_{r}  + \frac{2c_r}{\gamma_r -1}\left[\left(\frac{f_r(p_{I,r})}{f_r(p_r)}\right)^{(\gamma_r -1)/2\gamma_r}-1\right]
+	</div>
+
+				<div align="center" lang="latex">
+p_{I,l} - p_{I,r} = \sigma k
+	</div>
+
+<p> The above system of equations can then be solved numerically with an appropriate iterative root-finding algorithm. The Newton-Rhapson Method was used to determine the pressures and velocity at the interface.</p>
+
+<h2> The Sod Shock Tube Problem </h2>
+
+</p>  The Sod shock tube problem is an air-helium shock tube which can be initialized with the following conditions: </p>
+
+			<div align="center" lang="latex">
+
+(\rho, u, p, \gamma) =  (1.0, 0.0, 1.0, 1.4), (x \leq 0.5) 
+
+	</div>
+
+				<div align="center" lang="latex">
+
+(\rho, u, p, \gamma) =  (0.125, 0, 0.1, 1.667) , (x > 0.5) 
+
+	</div>
+
+		</div>
+		
+
+
+			</body>
+			</html>
